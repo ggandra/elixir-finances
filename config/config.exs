@@ -14,6 +14,10 @@ config :efinancas, Efinancas.Repo,
   migration_primary_key: [type: :binary_id],
   migration_foreign_key: [type: :binary_id]
 
+config :efinancas, Efinancas.Guardian,
+  issuer: "efinancas",
+  secret_key: "tLd+WFILGFsih+8BuQLgyh9eBMbOghny1P4ZZihumiVwvqG42F86YsNRmHey+c60"
+
 # Configures the endpoint
 config :efinancas, EfinancasWeb.Endpoint,
   url: [host: "localhost"],

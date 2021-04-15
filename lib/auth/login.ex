@@ -7,11 +7,11 @@ defmodule Efinancas.Auth.Login do
     |> match_password(params)
   end
 
-  defp match_password(%User{password_hash: password_hash}, params) do
+  defp match_password(%User{password_hash: password_hash} = user, params) do
     Bcrypt.verify_pass(params["password"], password_hash)
-    |> handle_auth()
+    |> handle_auth(user)
   end
 
-  defp handle_auth(true), do: {:ok, "User Authenticated"}
-  defp handle_auth(false), do: {:error, "Password not match"}
+  defp handle_auth(true, user), do: {:ok, user}
+  defp handle_auth(false, _user), do: {:error, "Password not match"}
 end

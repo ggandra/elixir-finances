@@ -1,8 +1,12 @@
 defmodule EfinancasWeb.AuthView do
 
-  def render("auth.json", _response) do
+  alias Efinancas.User
+
+  def render("auth.json", %{user: %User{name: name}, token: token}) do
     %{
-      ok: "User Authenticated"
+      response: "User Authenticated",
+      name: name,
+      token: token
     }
   end
 end
