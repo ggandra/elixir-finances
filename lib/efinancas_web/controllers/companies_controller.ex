@@ -3,6 +3,8 @@ defmodule EfinancasWeb.CompaniesController do
 
   alias Efinancas.Company
 
+  action_fallback EfinancasWeb.FallbackController
+
   def create(conn, params) do
     with {:ok, %Company{} = company} <- Efinancas.create_company(params) do
       conn
