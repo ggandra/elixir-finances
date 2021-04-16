@@ -13,6 +13,13 @@ defmodule EfinancasWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug Guardian.Plug.Pipeline, module: Efinancas.Guardian
+    plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+    plug Guardian.Plug.LoadResource
+    plug Guardian.Plug.EnsureAuthenticated
+  end
+
   scope "/", EfinancasWeb do
     pipe_through :browser
 
@@ -23,8 +30,10 @@ defmodule EfinancasWeb.Router do
   scope "/api", EfinancasWeb do
     pipe_through :api
 
-    post "/companies/create", CompaniesController, :create
     post "/auth/login", AuthController, :login
+    post "/companies/create", CompaniesController, :create
+
+    pipe_through :auth
   end
 
   # Enables LiveDashboard only for development
