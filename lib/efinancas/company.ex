@@ -3,6 +3,7 @@ defmodule Efinancas.Company do
   import Ecto.Changeset
 
   alias Efinancas.User
+  alias Efinancas.CashFlow
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -15,6 +16,7 @@ defmodule Efinancas.Company do
     field :country, :string
     field :city, :string
     has_many :user, User
+    has_many :cash_flow, CashFlow
 
     timestamps()
   end
