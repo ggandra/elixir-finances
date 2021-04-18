@@ -16,7 +16,7 @@ defmodule Efinancas.Guardian do
     resource = Repo.get_by(User, id: id)
     {:ok,  resource}
   end
-  def resource_from_claims(reason_for_error) do
-    {:error, reason_for_error}
+  def resource_from_claims() do
+    {:error, "Invalid Token"}
   end
 end
