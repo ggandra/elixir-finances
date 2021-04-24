@@ -8,7 +8,7 @@ defmodule Efinancas.User do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
 
-  @required_params [:name, :email, :password, :role]
+  @required_params [:name, :email, :password, :role, :company_id]
 
   schema "users" do
     field :name, :string
