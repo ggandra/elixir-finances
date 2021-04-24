@@ -1,4 +1,4 @@
-defmodule Efinancas.Company.Create do
+defmodule Efinancas.Companies.Create do
   alias Ecto.Multi
   alias Efinancas.{Company, User, Repo}
 

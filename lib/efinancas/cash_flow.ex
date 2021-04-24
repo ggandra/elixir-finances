@@ -7,9 +7,11 @@ defmodule Efinancas.CashFlow do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
 
-  @required_params [:type, :value, :date, :paid_received]
+  @required_params [:type, :value, :date, :paid_received, :company_id]
 
-  schema "cash_flow" do
+  @derive {Jason.Encoder, only: @required_params ++ [:id]}
+
+  schema "cash_flows" do
     field :type, :string
     field :value, :decimal
     field :date, :date

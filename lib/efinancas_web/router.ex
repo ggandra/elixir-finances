@@ -32,8 +32,12 @@ defmodule EfinancasWeb.Router do
 
     post "/auth/login", AuthController, :login
     post "/companies/create", CompaniesController, :create
+  end
 
-    pipe_through :auth
+  scope "/api", EfinancasWeb do
+    pipe_through([:api, :auth])
+
+    post "/cash_flows/create", CashFlowsController, :create
   end
 
   # Enables LiveDashboard only for development
