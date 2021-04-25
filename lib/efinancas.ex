@@ -5,5 +5,5 @@ defmodule Efinancas do
 
   defdelegate auth_login(params), to: AuthLogin, as: :call
   defdelegate create_company(params), to: CreateCompany, as: :call
-  defdelegate create_cash_flow(params), to: CreateCashFlow, as: :call
+  defdelegate create_cash_flow(params, current_user), to: CreateCashFlow, as: :call
 end

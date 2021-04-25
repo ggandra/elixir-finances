@@ -14,7 +14,7 @@ defmodule EfinancasWeb.Router do
   end
 
   pipeline :auth do
-    plug Guardian.Plug.Pipeline, module: Efinancas.Guardian
+    plug Guardian.Plug.Pipeline, module: Efinancas.Guardian, error_handler: Efinancas.Auth.ErrorHandler
     plug Guardian.Plug.VerifyHeader, realm: "Bearer"
     plug Guardian.Plug.LoadResource
     plug Guardian.Plug.EnsureAuthenticated

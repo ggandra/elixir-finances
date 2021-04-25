@@ -8,14 +8,13 @@ defmodule Efinancas.User do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
 
-  @required_params [:name, :email, :password, :role, :company_id]
+  @required_params [:name, :email, :password, :company_id]
 
   schema "users" do
     field :name, :string
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
-    field :role, :integer
     belongs_to :company, Company
 
     timestamps()
@@ -27,6 +26,7 @@ defmodule Efinancas.User do
     |> validate_length(:password, min: 6)
     |> validate_format(:email, ~r/@/)
     |> unique_constraint([:email])
+    |> validate_required(@required_params)
     |> password_hash()
   end
 

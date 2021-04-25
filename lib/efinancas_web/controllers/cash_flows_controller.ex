@@ -9,9 +9,9 @@ defmodule EfinancasWeb.CashFlowsController do
 
   def create(conn, params) do
     with :true <- Guardian.Plug.authenticated?(conn) do
-      # current_user = Guardian.Plug.current_resource(conn)
+      current_user = Guardian.Plug.current_resource(conn)
 
-      with {:ok, %CashFlow{} = cashflow} <- Efinancas.create_cash_flow(params) do
+      with {:ok, %CashFlow{} = cashflow} <- Efinancas.create_cash_flow(params, current_user) do
         conn
         |> put_status(:created)
         |> render("create.json", cashflow: cashflow)
