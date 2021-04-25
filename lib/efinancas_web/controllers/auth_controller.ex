@@ -7,7 +7,7 @@ defmodule EfinancasWeb.AuthController do
 
   def login(conn, params) do
     with {:ok, user} <- Efinancas.auth_login(params) do
-      {:ok, token, _full_claims} = Guardian.encode_and_sign(user, %{}, ttl: {15, :minute})
+      {:ok, token, _full_claims} = Guardian.encode_and_sign(user, %{}, ttl: {1, :hour})
       conn
       |> put_status(:ok)
       |> render("auth.json", user: user, token: token)
