@@ -3,7 +3,13 @@ defmodule EfinancasWeb.CashFlowsView do
 
   def render("create.json", %{cashflow: cashflow}) do
     %{
-      message: "Company created",
+      message: "Payment/Receipt created",
+      cashflow: cashflow
+    }
+  end
+
+  def render("show.json", %{cashflow: cashflow}) do
+    %{
       cashflow: cashflow
     }
   end
