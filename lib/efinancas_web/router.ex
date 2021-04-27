@@ -38,6 +38,7 @@ defmodule EfinancasWeb.Router do
     pipe_through([:api, :auth])
 
     post "/cash_flows/create", CashFlowsController, :create
+    get "/cash_flows/get_by_month", CashFlowsController, :show
   end
 
   # Enables LiveDashboard only for development
