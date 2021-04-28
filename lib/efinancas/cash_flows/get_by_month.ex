@@ -16,5 +16,9 @@ defmodule Efinancas.CashFlows.GetByMonth do
 
     query
     |> Repo.all()
+    |> handle_get()
   end
+
+  defp handle_get([_head | _tail] = current_month), do: {:ok, current_month}
+  defp handle_get([]), do: {:error, "You don't have any payment/receipt to this month"}
 end
