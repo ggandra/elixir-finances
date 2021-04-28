@@ -30,4 +30,17 @@ defmodule EfinancasWeb.CashFlowsController do
       end
     end
   end
+
+  def update(conn, params) do
+    IO.inspect(params)
+    with :true <- Guardian.Plug.authenticated?(conn) do
+      current_user = Guardian.Plug.current_resource(conn)
+
+      with {:ok, %CashFlow{} = cashflow} <- Efinancas.update_cash_flow(params, current_user) do
+        conn
+        |> put_status(:ok)
+        |> render("update.json", cashflow: cashflow)
+      end
+    end
+  end
 end
