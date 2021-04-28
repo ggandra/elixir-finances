@@ -23,7 +23,7 @@ defmodule EfinancasWeb.CashFlowsController do
     with :true <- Guardian.Plug.authenticated?(conn) do
       current_user = Guardian.Plug.current_resource(conn)
 
-      with {:ok, %CashFlow{} = cashflow} <- Efinancas.get_cash_flow_by_month(current_user) do
+      with {:ok, cashflow} <- Efinancas.get_cash_flow_by_month(current_user) do
         conn
         |> put_status(:ok)
         |> render("show.json", cashflow: cashflow)
