@@ -32,14 +32,25 @@ defmodule EfinancasWeb.CashFlowsController do
   end
 
   def update(conn, params) do
-    IO.inspect(params)
     with :true <- Guardian.Plug.authenticated?(conn) do
       current_user = Guardian.Plug.current_resource(conn)
 
-      with {:ok, %CashFlow{} = cashflow} <- Efinancas.update_cash_flow(params, current_user) do
+      with {:ok, cashflow} <- Efinancas.update_cash_flow(params, current_user) do
         conn
         |> put_status(:ok)
         |> render("update.json", cashflow: cashflow)
+      end
+    end
+  end
+
+  def delete(conn, params) do
+    with :true <- Guardian.Plug.authenticated?(conn) do
+      current_user = Guardian.Plug.current_resource(conn)
+
+      with {:ok, cashflow} <- Efinancas.delete_cash_flow(params, current_user) do
+        conn
+        |> put_status(:ok)
+        |> render("delete.json", cashflow: cashflow)
       end
     end
   end
