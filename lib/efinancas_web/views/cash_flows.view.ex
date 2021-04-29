@@ -6,4 +6,6 @@ defmodule EfinancasWeb.CashFlowsView do
   def render("show.json", %{cashflow: cashflow}), do: %{ cashflow: cashflow }
 
   def render("update.json", %{cashflow: cashflow}), do: %{ cashflow: cashflow }
+
+  def render("delete.json", %{cashflow: cashflow}), do: %{ cashflow: cashflow }
 end

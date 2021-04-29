@@ -40,6 +40,7 @@ defmodule EfinancasWeb.Router do
     post "/cash_flows/create", CashFlowsController, :create
     get "/cash_flows/get_by_month", CashFlowsController, :show
     put "/cash_flows/update/:id", CashFlowsController, :update
+    delete "/cash_flows/delete/:id", CashFlowsController, :delete
   end
 
   # Enables LiveDashboard only for development
