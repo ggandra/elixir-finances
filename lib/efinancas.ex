@@ -11,5 +11,5 @@ defmodule Efinancas do
   defdelegate create_cash_flow(params, current_user), to: CreateCashFlow, as: :call
   defdelegate update_cash_flow(params, current_user), to: UpdateCashFlow, as: :call
   defdelegate delete_cash_flow(params, current_user), to: DeleteCashFlow, as: :call
-  defdelegate get_cash_flow_by_month(current_user), to: GetCashFlowByMonth, as: :call
+  defdelegate get_cash_flow_by_month(params, current_user), to: GetCashFlowByMonth, as: :call
 end

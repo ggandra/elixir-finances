@@ -38,7 +38,7 @@ defmodule EfinancasWeb.Router do
     pipe_through([:api, :auth])
 
     post "/cash_flows/create", CashFlowsController, :create
-    get "/cash_flows/get_by_month", CashFlowsController, :show
+    get "/cash_flows/get_by_month/:year/:month", CashFlowsController, :show
     put "/cash_flows/update/:id", CashFlowsController, :update
     delete "/cash_flows/delete/:id", CashFlowsController, :delete
   end
