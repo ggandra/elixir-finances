@@ -7,9 +7,9 @@ use Mix.Config
 # Run `mix help test` for more information.
 config :efinancas, Efinancas.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "971998",
   database: "efinancas_test#{System.get_env("MIX_TEST_PARTITION")}",
-  hostname: "localhost",
+  hostname: "0.0.0.0",
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
